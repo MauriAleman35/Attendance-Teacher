@@ -1,0 +1,54 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "paths": {
+      "@spartan-ng/ui-alert-helm": [
+        ".\\components/ui-alert-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-card-helm": [
+        ".\\components/ui-card-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-menu-helm": [
+        ".\\components/ui-menu-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-table-helm": [
+        ".\\components/ui-table-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-icon-helm": [
+        ".\\components/ui-icon-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-button-helm": [
+        ".\\components/ui-button-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-checkbox-helm": [
+        ".\\components/ui-checkbox-helm/src/index.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
