@@ -29,6 +29,7 @@
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "lucide-angular": "^0.379.0",
+    "material-icons": "^1.13.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

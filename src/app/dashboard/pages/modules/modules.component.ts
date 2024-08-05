@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon'
+import { ModuloService } from '../../../services/ModuloService.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCreateComponent } from './dialog-create/dialog-create.component';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-modules',
   standalone: true,
   imports: [
-    CommonModule,MatIconModule
+    CommonModule,MatIconModule,RouterLink
   ],
   templateUrl: './modules.component.html',
   styles: `
@@ -17,11 +21,28 @@ import {MatIconModule} from '@angular/material/icon'
 })
 export default class ModulesComponent { 
 
-  users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'user' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'admin' },
-    
-    // Otros usuarios...
-  ];
-  displayedColumns: string[] = ['name', 'email', 'role', 'actions'];
+  public moduloService=inject(ModuloService)
+
+  
+  
+  constructor(public dialog: MatDialog,public dialogEdit: MatDialog) {
+    this.moduloService.modulos
+  }
+ 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogCreateComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+ 
+
+
+
+  onDeleteAdmin(id: number): void {
+    this.moduloService.delete(id).subscribe(()=>{
+      console.log("ok")
+    })
+  }
 }

@@ -1,11 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MateriasService } from '../../../services/Materia.service';
+import { MatDialog } from '@angular/material/dialog';
+
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { CarreraService } from '../../../services/Carrera.service';
+import DialogEditComponent from './crear-materia/crear-materia.component';
 
 @Component({
   selector: 'app-subjects',
   standalone: true,
   imports: [
-    CommonModule,
+    CommonModule,RouterLink,RouterOutlet,DialogEditComponent
   ],
   templateUrl: './subjects.component.html',
   styles: `
@@ -16,12 +22,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SubjectsComponent { 
-  users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'user' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'admin' },
-    
-    // Otros usuarios...
-  ];
-  displayedColumns: string[] = ['name', 'email', 'role', 'actions'];
+  public materiasService=inject(MateriasService)
+  public router = inject(Router);
+  
+  
+  constructor() {
+    this.materiasService.materias
+  }
+ 
+
+
+
+  onDeleteAdmin(id: number): void {
+    this.materiasService.delete(id).subscribe(()=>{
+      console.log("ok")
+    })
+  }
 
 }
